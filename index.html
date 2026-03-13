@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManzMedia - Link & Dukungan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            primary: '#3b82f6',
+                            accent: '#facc15'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            color: white;
+            scroll-behavior: smooth;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="w-full p-4 flex justify-center items-center glass-panel sticky top-0 z-40">
+        <div class="flex items-center gap-3">
+            <img src="https://i.ibb.co.com/hJx56ds6/Vibrant-Logo-for-Manz-Media.png" alt="ManzMedia Logo" class="w-10 h-10 rounded-full object-cover">
+            <span class="text-xl font-bold tracking-wide">ManzMedia</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-md px-4 py-8 flex flex-col gap-6">
+        
+        <!-- Profile Card -->
+        <div class="glass-panel rounded-2xl p-6 text-center shadow-xl">
+            <div class="relative w-24 h-24 mx-auto mb-4">
+                <img src="https://i.ibb.co.com/hJx56ds6/Vibrant-Logo-for-Manz-Media.png" alt="ManzMedia" class="w-full h-full rounded-full object-cover border-4 border-brand-card shadow-lg">
+                <div class="absolute bottom-0 right-0 bg-green-500 w-5 h-5 rounded-full border-2 border-brand-card"></div>
+            </div>
+            <h1 class="text-2xl font-bold mb-1">ManzMedia</h1>
+            <p class="text-gray-400 text-sm mb-4">Content Writer & Programmer</p>
+        </div>
+
+        <!-- Linktree Section -->
+        <div class="flex flex-col gap-3">
+            <a href="https://manz-code.vercel.app/" target="_blank" class="glass-panel w-full py-4 px-4 rounded-xl text-center font-semibold hover:bg-slate-700 hover:-translate-y-1 transition transform border border-slate-600 shadow-lg">
+                Order Website
+            </a>
+            <a href="https://manzmedia.vercel.app/" target="_blank" class="glass-panel w-full py-4 px-4 rounded-xl text-center font-semibold hover:bg-slate-700 hover:-translate-y-1 transition transform border border-slate-600 shadow-lg">
+                Order Artikel
+            </a>
+            <button onclick="toggleDukungan()" class="glass-panel w-full py-4 px-4 rounded-xl text-center font-semibold hover:bg-slate-700 hover:-translate-y-1 transition transform border border-brand-accent/50 shadow-[0_0_15px_rgba(250,204,21,0.2)] text-brand-accent focus:outline-none">
+                Dukungan
+            </button>
+        </div>
+
+        <!-- Dukungan Section -->
+        <div id="dukungan" class="glass-panel rounded-2xl p-6 shadow-2xl shadow-brand-accent/10 border border-brand-accent/30 mt-2 hidden opacity-0 transform -translate-y-4 transition-all duration-500 ease-out scroll-mt-24">
+            <h2 class="text-lg font-semibold mb-4 border-l-4 border-brand-accent pl-3 text-white">Dukungan via QRIS</h2>
+            
+            <div class="flex flex-col items-center gap-5">
+                <div class="bg-white p-3 rounded-2xl border-2 border-brand-accent/50 w-60 shadow-lg transform hover:scale-105 transition duration-300">
+                    <img src="https://i.ibb.co.com/RMbkbfk/qirs.jpg" alt="QRIS ManzMedia" class="w-full h-auto rounded-xl object-contain">
+                </div>
+                
+                <p class="text-sm text-gray-300 text-center px-4">Silakan download QRIS di bawah ini untuk memberikan dukungan terbaikmu.</p>
+
+                <button onclick="downloadQRIS()" class="w-full bg-gradient-to-r from-brand-accent to-yellow-500 hover:from-yellow-400 hover:to-yellow-300 text-slate-900 font-bold py-3 px-4 rounded-xl shadow-lg shadow-yellow-500/30 transition transform active:scale-95 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download QRIS (JPG)
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full p-6 text-center text-gray-500 text-sm mt-auto">
+        <p>&copy; <span id="currentYear"></span> ManzMedia. All rights reserved.</p>
+    </footer>
+
+    <!-- Guide Modal -->
+    <div id="guideModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="relative w-full max-w-sm bg-white rounded-2xl p-6 shadow-2xl transform scale-95 transition-transform duration-300 text-center" id="guideContent">
+            
+            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+
+            <h3 class="text-slate-800 font-bold text-xl mb-2">Panduan Pembayaran</h3>
+            <p class="text-slate-600 mb-4 leading-relaxed">
+                "Buka aplikasi DANA, Scan, pilih dari galeri, masukkan QRIS nya, nah begitu"
+            </p>
+            
+            <!-- Added GIF -->
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWx3ZmVuaW1xdTEwcjgybDlxZHoyYjV4N3NvbzJoN3Q4YnAwejQ3MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ovHlQnHMZgVu9XRJfX/giphy.gif" alt="Reaction GIF" class="w-full h-auto rounded-xl mb-6 shadow-sm">
+            
+            <button onclick="closeGuideModal()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl transition shadow-md">
+                Mengerti
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Set dynamic year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const guideModal = document.getElementById('guideModal');
+        const guideContent = document.getElementById('guideContent');
+        const dukunganSection = document.getElementById('dukungan');
+
+        function toggleDukungan() {
+            if (dukunganSection.classList.contains('hidden')) {
+                dukunganSection.classList.remove('hidden');
+                // Force reflow
+                void dukunganSection.offsetWidth;
+                dukunganSection.classList.remove('opacity-0', '-translate-y-4');
+                dukunganSection.classList.add('opacity-100', 'translate-y-0');
+                
+                setTimeout(() => {
+                    dukunganSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            } else {
+                dukunganSection.classList.remove('opacity-100', 'translate-y-0');
+                dukunganSection.classList.add('opacity-0', '-translate-y-4');
+                setTimeout(() => {
+                    dukunganSection.classList.add('hidden');
+                }, 500); // Wait for transition to finish
+            }
+        }
+
+        function downloadQRIS() {
+            // Trigger download
+            const imageUrl = 'https://i.ibb.co.com/RMbkbfk/qirs.jpg';
+            
+            fetch(imageUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'QRIS_ManzMedia.jpg';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    // Show guide after download is triggered
+                    openGuideModal();
+                })
+                .catch(() => {
+                    // Fallback if fetch fails due to CORS
+                    const a = document.createElement('a');
+                    a.href = imageUrl;
+                    a.target = '_blank';
+                    a.download = 'QRIS_ManzMedia.jpg';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    
+                    openGuideModal();
+                });
+        }
+
+        function openGuideModal() {
+            guideModal.classList.remove('hidden');
+            setTimeout(() => {
+                guideModal.classList.remove('opacity-0');
+                guideContent.classList.remove('scale-95');
+                guideContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeGuideModal() {
+            guideModal.classList.add('opacity-0');
+            guideContent.classList.remove('scale-100');
+            guideContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                guideModal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close when clicking outside
+        guideModal.addEventListener('click', function(e) {
+            if (e.target === guideModal) {
+                closeGuideModal();
+            }
+        });
+    </script>
+</body>
+</html>
