@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManzMedia - Dukungan & Donasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            primary: '#3b82f6',
+                            accent: '#facc15' // Yellowish like Saweria
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            color: white;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="w-full p-4 flex justify-center items-center glass-panel sticky top-0 z-40">
+        <div class="flex items-center gap-3">
+            <img src="https://i.ibb.co.com/hJx56ds6/Vibrant-Logo-for-Manz-Media.png" alt="ManzMedia Logo" class="w-10 h-10 rounded-full object-cover">
+            <span class="text-xl font-bold tracking-wide">ManzMedia</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-md px-4 py-8 flex flex-col gap-6">
+        
+        <!-- Profile Card -->
+        <div class="glass-panel rounded-2xl p-6 text-center shadow-xl">
+            <div class="relative w-24 h-24 mx-auto mb-4">
+                <img src="https://i.ibb.co.com/hJx56ds6/Vibrant-Logo-for-Manz-Media.png" alt="ManzMedia" class="w-full h-full rounded-full object-cover border-4 border-brand-card shadow-lg">
+                <div class="absolute bottom-0 right-0 bg-green-500 w-5 h-5 rounded-full border-2 border-brand-card"></div>
+            </div>
+            <h1 class="text-2xl font-bold mb-1">ManzMedia</h1>
+            <p class="text-gray-400 text-sm mb-4">Content Creator & Developer</p>
+            <div class="bg-blue-900/30 text-blue-200 text-xs py-1 px-3 rounded-full inline-block border border-blue-500/30">
+                Terima kasih atas dukungan kalian!
+            </div>
+        </div>
+
+        <!-- Donation Form -->
+        <div class="glass-panel rounded-2xl p-6 shadow-xl">
+            <h2 class="text-lg font-semibold mb-4 border-l-4 border-brand-accent pl-3">Isi Nominal Dukungan</h2>
+            
+            <form id="donationForm" class="flex flex-col gap-4" onsubmit="event.preventDefault(); redirectToDana();">
+                <!-- Nominal Buttons -->
+                <div class="grid grid-cols-3 gap-2 mb-2">
+                    <button type="button" onclick="setAmount(10000)" class="bg-slate-700 hover:bg-slate-600 py-2 rounded-lg text-sm transition font-medium border border-slate-600">Rp 10k</button>
+                    <button type="button" onclick="setAmount(25000)" class="bg-slate-700 hover:bg-slate-600 py-2 rounded-lg text-sm transition font-medium border border-slate-600">Rp 25k</button>
+                    <button type="button" onclick="setAmount(50000)" class="bg-slate-700 hover:bg-slate-600 py-2 rounded-lg text-sm transition font-medium border border-slate-600">Rp 50k</button>
+                </div>
+
+                <!-- Input Amount -->
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">Rp</span>
+                    <input type="number" id="amount" placeholder="0" class="w-full bg-slate-800/50 border border-slate-600 rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition text-lg font-semibold" required min="1000">
+                </div>
+
+                <!-- Input Name -->
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-gray-400 uppercase font-bold tracking-wider">Dari</label>
+                    <input type="text" placeholder="Nama Kamu / Anonim" class="w-full bg-slate-800/50 border border-slate-600 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition">
+                </div>
+
+                <!-- Input Message -->
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-gray-400 uppercase font-bold tracking-wider">Pesan</label>
+                    <textarea rows="3" placeholder="Tulis pesan dukunganmu..." class="w-full bg-slate-800/50 border border-slate-600 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition resize-none"></textarea>
+                </div>
+
+                <!-- Payment Method Preview -->
+                <div class="mt-2 p-3 bg-slate-800/50 rounded-xl border border-dashed border-slate-600 flex items-center justify-between cursor-pointer hover:bg-slate-700/50 transition group" onclick="openQrisModal()">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-white p-1 rounded">
+                            <!-- Simple QR Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4h2v-4zM6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sm font-bold">QRIS & DANA</span>
+                            <span class="text-xs text-brand-accent">Klik untuk melihat kode QRIS</span>
+                        </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-white transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+
+                <button type="submit" class="mt-2 w-full bg-brand-accent hover:bg-yellow-400 text-slate-900 font-bold py-3 rounded-xl shadow-lg shadow-yellow-500/20 transition transform active:scale-95">
+                    Kirim Dukungan
+                </button>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full p-6 text-center text-gray-500 text-sm mt-auto">
+        <p>&copy; 2023 ManzMedia. All rights reserved.</p>
+    </footer>
+
+    <!-- QRIS & Payment Modal (Full Screen) -->
+    <div id="qrisModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
+        <div class="relative w-full max-w-sm bg-white rounded-2xl p-3 shadow-2xl transform scale-95 transition-transform duration-300 my-8" id="modalContent">
+            
+            <!-- Header Modal -->
+            <div class="flex justify-between items-center p-2 border-b border-gray-100 mb-2">
+                <h3 class="text-slate-800 font-bold text-lg">Pembayaran</h3>
+                <button onclick="closeQrisModal()" class="text-gray-400 hover:text-red-500 transition p-1 bg-gray-100 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- QR Image -->
+            <div class="bg-gray-50 p-2 rounded-xl border border-gray-200">
+                <img src="https://i.ibb.co.com/RMbkbfk/qirs.jpg" alt="QRIS ManzMedia" class="w-full h-auto rounded-lg object-contain">
+                <p class="text-center text-slate-500 text-xs mt-2">Scan menggunakan aplikasi e-wallet pilihanmu.</p>
+            </div>
+
+            <!-- Footer Modal / Action -->
+            <div class="mt-3 flex flex-col gap-2">
+                <!-- Bagikan QRIS -->
+                <button type="button" onclick="shareQris()" class="flex items-center justify-center gap-2 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-xl transition text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-5.368m0 5.368l5.662 3.397m-5.662-3.397l5.662-3.397M15 13a3 3 0 110-6 3 3 0 010 6zm0 10a3 3 0 110-6 3 3 0 010 6z" />
+                    </svg>
+                    Bagikan
+                </button>
+
+                <!-- Buka Aplikasi DANA -->
+                <button type="button" onclick="redirectToDana()" class="flex items-center justify-center gap-2 w-full bg-[#118EEA] hover:bg-blue-500 text-white font-semibold py-3 rounded-xl transition text-sm shadow-md">
+                    Buka Aplikasi DANA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set predefined amount
+        function setAmount(value) {
+            document.getElementById('amount').value = value;
+        }
+
+        const modal = document.getElementById('qrisModal');
+        const modalContent = document.getElementById('modalContent');
+
+        // Open Modal
+        function openQrisModal() {
+            modal.classList.remove('hidden');
+            // Small timeout to allow display:block to apply before opacity transition
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        // Close Modal
+        function closeQrisModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Match duration
+        }
+
+        // Close when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeQrisModal();
+            }
+        });
+
+        // Redirect to DANA app
+        function redirectToDana() {
+            const amount = document.getElementById('amount').value;
+            if (amount && amount >= 1000) {
+                // Mencoba membuka aplikasi DANA dengan nominal yang dipilih
+                window.location.href = 'dana://pay?amount=' + amount;
+                
+                // Fallback informasi jika device tidak otomatis membuka aplikasi
+                setTimeout(() => {
+                    console.log('Membuka DANA dengan nominal: Rp ' + amount);
+                }, 1000);
+            } else {
+                alert('Silakan masukkan nominal dukungan yang valid (Minimal Rp 1.000)');
+            }
+        }
+
+        // Share QRIS
+        function shareQris() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'QRIS ManzMedia',
+                    text: 'Dukung ManzMedia dengan scan QRIS ini atau kirim via DANA.',
+                    url: 'https://i.ibb.co.com/RMbkbfk/qirs.jpg'
+                }).catch(console.error);
+            } else {
+                alert('Fitur bagikan tidak didukung di browser ini.');
+            }
+        }
+    </script>
+</body>
+</html>
